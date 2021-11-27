@@ -5,7 +5,7 @@ const { verifyToken } = require("../utils/middlewares");
 router.use(verifyToken);
 
 router.get('/:id', (req, res) => {
-    Mascota.find({ _id: req.params.id }).then(
+    Mascota.findOne({ _id: req.params.id }).then(
         data => res.json(data)
     ).catch(
         err => res.send("error")
@@ -14,15 +14,15 @@ router.get('/:id', (req, res) => {
 
 router.get('/', (req, res) => {
     Mascota.find().then(
-        data => res.json({ data })
+        data => res.json(data)
     ).catch(
-        err => res.send(":(")
+        err => res.send("error")
     )
 });
 
 router.post('/', (req, res) => {
-    const { nombre, tipo } = req.body;
-    const mascota = new Mascota({ nombre, tipo });
+    const { nombre, tipo, edad, vacunado, observaciones } = req.body;
+    const mascota = new Mascota({ nombre, tipo, edad, vacunado, observaciones });
     mascota.save((err, data) => {
         if (err) {
             res.json({ ok: false, message: "No se pudo guardar la información." })
@@ -40,7 +40,7 @@ router.delete("/:id", (req, res) => {
         res.json({ ok: false, message: "No se pudo eliminar la información." })
     })
         .catch(err => {
-            next(err);
+            res.send(err);
         });
 });
 

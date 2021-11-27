@@ -3,7 +3,10 @@ const {model, Schema} = mongoose;
 
 const mascotaSchema = new Schema({
     nombre: {type: String, required : true},
-    tipo: {type : String, required : true}
+    tipo: {type : String, required : true},
+	edad: {type : Number, required : true},
+	vacunado: {type : String, required : true},
+	observaciones: {type : String, required : false}
 });
 
 mascotaSchema.set("toJSON", {
