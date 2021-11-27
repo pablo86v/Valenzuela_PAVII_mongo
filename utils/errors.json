@@ -1,0 +1,32 @@
+[
+    {
+        "name": "CastError",
+        "code": 400,
+        "message" : "Id invalido"
+    },
+    {
+        "name": "ReferenceError",
+        "code": 400,
+        "message" : ""
+    },
+    {
+        "name": "ValidationError",
+        "code": 400,
+        "message" : ""
+    },
+    {
+        "name": "ErrorToken",
+        "code": 403,
+        "message" : "No token"
+    },
+    {
+        "name": "JsonWebTokenError",
+        "code": 401,
+        "message" : ""
+    },
+    {
+        "name": "TokenExpiredError",
+        "code": 401,
+        "message" : ""
+    }
+]

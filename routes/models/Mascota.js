@@ -6,6 +6,13 @@ const mascotaSchema = new Schema({
     tipo: {type : String, required : true}
 });
 
+mascotaSchema.set("toJSON", {
+    transform:((document, mascotaToJSON) => {
+        mascotaToJSON.id = mascotaToJSON._id.toString();
+        delete mascotaToJSON._id; 
+        delete mascotaToJSON.__v;
+    })
+})
 
 module.exports = model("Mascota", mascotaSchema);
 

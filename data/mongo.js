@@ -1,7 +1,8 @@
 const { connect } = require('mongoose');
+const {DB_URI} = require('../utils/config')
 
-connect('mongodb://localhost:27017/mascotas').then(
+connect(DB_URI).then(
     res => console.log("Conectado ok")
 ).catch(
-    console.error("Error de BD")
+    console.error(DB_URI)
 );
