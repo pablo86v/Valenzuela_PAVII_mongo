@@ -5,7 +5,7 @@ const mascotaSchema = new Schema({
     nombre: {type: String, required : true},
     tipo: {type : String, required : true},
 	edad: {type : Number, required : true},
-	vacunado: {type : String, required : true},
+	vacunado: {type : Boolean, required : true},
 	observaciones: {type : String, required : false}
 });
 

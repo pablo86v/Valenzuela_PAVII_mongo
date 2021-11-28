@@ -32,6 +32,19 @@ router.post('/', (req, res) => {
     })
 });
 
+router.put('/:id', (req, res, next) => {
+    Mascota.findByIdAndUpdate(req.params.id, req.body, { new: true })
+        .then(mascotaModif => { 
+            if (mascotaModif) {
+                res.json(mascotaModif);
+            }
+            res.status(400).end();
+        })
+        .catch(err => {
+            next(err);
+        })
+});
+
 router.delete("/:id", (req, res) => {
     Mascota.findByIdAndRemove(req.params.id).then((data) => {
         if (data) {

@@ -16,10 +16,6 @@ router.post('/', async (req, res, next) =>{
     try {
         const { userName, password} = req.body;
 
-        if(password.length !== 6){
-            return next({name: "validationError", message: "No tiene 6 caracteres"});
-        }
-
         const passwordHash = await bcrypt.hash(password, 10);
         const user = new User({userName, passwordHash});
         const userSaved = await user.save();
